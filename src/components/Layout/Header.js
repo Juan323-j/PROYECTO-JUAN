@@ -1,22 +1,30 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 const Header = () => {
+  
     return(
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-<div class="container-fluid">
-    <a class="navbar-brand" href="#">Aplicación</a>
-
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="ddd">Horario</a>
-        <a class="nav-link" href="JAJA">Nasa</a>
-       
-      </div>
-    </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <Link to='/'>
+    <img src='./logo192.png' width='50'/>
+  </Link>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav m-auto" >
+      <li className="nav-item active">
+        <Link className="nav-link" to='/login'>Inicar sesion <span class="sr-only">(current)</span></Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to='/nasa'>Consumo Api</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to='/reloj'>Reloj JS</Link>
+      </li>
+      
+    </ul>
   </div>
-    <div>
-    
-    </div>
-
 </nav>
 
     );

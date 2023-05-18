@@ -1,30 +1,36 @@
-import React from "react"
+import React, { useState, useEffect} from "react"
+const style = {
+    width: '18rem',
+    textAlign: 'center',
+    borderColor: 'black'
+  };
 const Nasa = () => {
-  //consumo de servicio web
-fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
-.then(response => response.json())
-.then((data) => {
-    //agregar un nuevo nodo ne base a los atributos de la api de la nasa en el documento
-    console.log(data)
-    //eleccionar un elemento del documento
-    const granulosUI = document.getElementById("granulos")
-    //recorro los datos en la lista
-    data.response.forEach((granulo) => {
-        const item = document.createElement("div");
-        item.append(granulo)
-        //agregar a la UI
-        granulosUI.appendChild(item);
-});
-    
-})
-.catch((error)=> {
-    //lo intento agregar en un log para que me salga en rojo
-    console.log(error);
-})
+    const [api, setApi] = useState();
+    console.log(api);
+    useEffect(() => {
+        apiData();
+    }, []);
+    const apiData = () => {
+        fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+        .then(response => response.json())
+        .then((data) => {
+            setApi(data);   
+        })
+        .catch((error)=> {    
+            console.log(error);
+        })
+    };
+  
+
     return(
 
-    <div></div>
-
+<div class="card" style={style}>
+ <img src={api?.hdurl} width={200} height={200} style={style}></img>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p width={200} height={200}>{api?.title}</p>
+  </div>
+</div>
 
     );
 };
