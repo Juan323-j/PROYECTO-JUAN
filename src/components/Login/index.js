@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import usersData from '../../data.json';
-import { Link } from "react-router-dom";
+import { Link, useHistory  } from "react-router-dom";
+
 
 
   const  Login = () => {
+      const history = useHistory();
+      const irAPantalla = () => {
+        history.push('/reloj');
+      }
+      
+    
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
         function handleLogin(event) {
@@ -16,10 +23,12 @@ import { Link } from "react-router-dom";
               
                 if (user) {
                   // Credenciales válidas, realizar acciones de inicio de sesión exitoso
-                  console.log('Grandioso, ya puedes ingresar');
+                  alert("Bienvenido, ya eres parte de nuestro equipo");
+                  irAPantalla();
+                
                 } else {
                   // Credenciales inválidas, mostrar mensaje de error o realizar acciones adicionales
-                  console.log('No se pudo, los datos estan mal :)');
+                  alert("Tus datos son incorrectos");
                 }
               }
           
@@ -29,8 +38,8 @@ import { Link } from "react-router-dom";
 <div id="template-bg-1" onSubmit={handleLogin}>
 <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
 < div class="card p-4 text-light bg-dark mb-5">
-              <div class="card-header">
-                      <h3>Iniciar sesión </h3>
+          <div class="card-header">
+          <h3>Iniciar sesión </h3>
 </div>
         <div class="card-body w-100">
         <form name="login" action="" method="post">
@@ -57,7 +66,8 @@ onChange={(event) => setPassword(event.target.value)}
 </div>
 
 <div class="form-group mt-3">
-<input type="submit" value="Ingresar" class="btn bg-secondary float-end text-white w-100" name="login-btn"/> 
+<input type="submit" value="Ingresar" class="btn bg-secondary float-end text-white w-100" name="login-btn"  
+/> 
         </div>
 </form>
 <div class="text-danger">

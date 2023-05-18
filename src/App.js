@@ -1,26 +1,24 @@
 import React from 'react'; 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as  Router, Switch, Route} from 'react-router-dom';
 import Header from './components/Layout/Header';
-import Login from './components/Login/index';
-import Nasa from './components/Nasa/Nasa.js';
+import Login from './components/Login';
+import Nasa from './components/Nasa/Nasa';
 import Reloj from './components/Hora/Reloj';
+
+
 
 function App() {
   return (
-    <div className="container-fluid">
-      <Router>
-        {
-          <Reloj/>
-        }
-      </Router>
-      
+  <Router>
+    <Header/>
+    <Switch>
+    <Route path='/login' exact component={Login}></Route>
+    <Route path='/nasa' exact component={Nasa}></Route>
+    <Route path='/reloj' exact component={Reloj}></Route>
+    </Switch>
+  </Router>
 
 
-
-<div className="row" style={{padding: '24px 10px'}}>
-
-</div>
-    </div>
   );
 }
 
